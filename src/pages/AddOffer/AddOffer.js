@@ -3,15 +3,15 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import "./AddOffer.css";
 const AddOffer = () => {
-  const { register, handleSubmit,reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     console.log(data);
     axios
-      .post("http://localhost:5000/offers", data)
+      .post("https://dry-gorge-55109.herokuapp.com/offers", data)
       .then((res) => {
-        if(res.data.insertedId){
-            alert('Added Successfully');
-            reset();
+        if (res.data.insertedId) {
+          alert("Added Successfully");
+          reset();
         }
       });
   };

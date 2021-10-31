@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 const OfferInfo = () => {
   const { offerId } = useParams();
-  const [offer,setOffer] = useState({});
+  const [offer, setOffer] = useState({});
   useEffect(() => {
-    const url = `http://localhost:5000/offers/${offerId}`;
+    const url = `https://dry-gorge-55109.herokuapp.com/offers/${offerId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOffer(data));
@@ -26,11 +26,9 @@ const OfferInfo = () => {
             <ListGroupItem className="fw-bold">
               Duration: {offer.tripDuration}
             </ListGroupItem>
+            <ListGroupItem className="fw-bold">Fee: {offer.fee}</ListGroupItem>
             <ListGroupItem className="fw-bold">
-             Fee: {offer.fee}
-            </ListGroupItem>
-            <ListGroupItem className="fw-bold">
-             Date and Time: {offer.tripDate}
+              Date and Time: {offer.tripDate}
             </ListGroupItem>
           </ListGroup>
           <Card.Body className="text-center">

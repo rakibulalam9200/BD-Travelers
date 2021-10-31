@@ -7,21 +7,23 @@ const UpdateOffer = () => {
   const { id } = useParams();
   const [offer, setOffer] = useState({});
   const { register, handleSubmit } = useForm();
-  
+
   useEffect(() => {
-    const url = `http://localhost:5000/offers/${id}`;
+    const url = `https://dry-gorge-55109.herokuapp.com/offers/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOffer(data));
   }, []);
 
   const onSubmit = (data) => {
-    axios.put(`http://localhost:5000/offers/${id}`, data).then((res) => {
-      if (res.data.modifiedCount> 0) {
+    axios
+      .put(`https://dry-gorge-55109.herokuapp.com/offers/${id}`, data)
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
           console.log(res.data);
-        alert("Updated Successfully");
-      }
-    });
+          alert("Updated Successfully");
+        }
+      });
   };
   return (
     <div className="addOffer">

@@ -1,10 +1,17 @@
 import React from 'react';
-
+import { Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import notFound from '../../images/404.png'
 const NotFound = () => {
     return (
-        <div>
-            <h2>Not found</h2>
-        </div>
+        <div className="text-center">
+      <img style={{width:'100%'}} src={notFound} alt="" />
+      <br />
+      <Link to='/home'>
+      <Button variant="primary" className="fw-bold">Go Home</Button>
+      </Link>
+      
+    </div>
     );
 };
 
