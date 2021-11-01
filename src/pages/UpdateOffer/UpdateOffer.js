@@ -7,7 +7,7 @@ import { useParams } from "react-router";
 const UpdateOffer = () => {
   const { id } = useParams();
   const [offer, setOffer] = useState({});
-  const { register, handleSubmit } = useForm();
+  const {register,handleSubmit,reset } = useForm({defaultValues: offer});
 
   useEffect(() => {
     const url = `https://dry-gorge-55109.herokuapp.com/offers/${id}`;
@@ -15,18 +15,25 @@ const UpdateOffer = () => {
       .then((res) => res.json())
       .then((data) => setOffer(data));
   }, []);
+ 
+    const onSubmit = (data) => {
+      console.log(data);
+      axios
+        .put(`https://dry-gorge-55109.herokuapp.com/offers/${id}`, data)
+        .then((res) => {
+          if (res.data.modifiedCount > 0) {
+            setOffer(res.data);
+            reset(res.data);
+            alert("Updated Successfully");
+          }
+        });
+  
+    };
 
-  const onSubmit = (data) => {
-    console.log(data);
-    axios
-      .put(`https://dry-gorge-55109.herokuapp.com/offers/${id}`, data)
-      .then((res) => {
-        if (res.data.modifiedCount > 0) {
-          //console.log(res.data);
-          alert("Updated Successfully");
-        }
-      });
-  };
+    useEffect(() => {
+      console.log(offer);
+    }, [offer]);
+  
   return (
     <div className="addOffer">
       <Helmet>
@@ -38,23 +45,23 @@ const UpdateOffer = () => {
           <input
             defaultValue={offer.name}
             {...register("name", { required: true, maxLength: 20 })}
-            placeholder="Enter Offer Name"
+            placeholder="Enter Offer Name" 
           />
           <textarea
             defaultValue={offer.description}
             {...register("description")}
-            placeholder="Description"
+            placeholder="Description" 
           />
           <input
             defaultValue={offer.fee}
             type="number"
             {...register("fee")}
-            placeholder="Fee"
+            placeholder="Fee" 
           />
           <input
             defaultValue={offer.tripDate}
             {...register("tripDate")}
-            placeholder="Enter Date and Time of Trip"
+            placeholder="Enter Date and Time of Trip" 
           />
           <input
             defaultValue={offer.tripDuration}
@@ -64,7 +71,7 @@ const UpdateOffer = () => {
           <input
             defaultValue={offer.img}
             {...register("img")}
-            placeholder="Enter Your Image URL"
+            placeholder="Enter Your Image URL" 
           />
           <input type="submit" value="Update" />
         </form>
