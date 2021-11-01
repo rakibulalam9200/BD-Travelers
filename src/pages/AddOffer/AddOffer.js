@@ -6,7 +6,6 @@ import "./AddOffer.css";
 const AddOffer = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
     axios
       .post("https://dry-gorge-55109.herokuapp.com/offers", data)
       .then((res) => {

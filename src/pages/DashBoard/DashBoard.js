@@ -21,7 +21,6 @@ const DashBoard = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.deletedCount) {
             alert("Deleted Successfully");
             const reaminingBooked = books.filter((book) => book._id !== id);

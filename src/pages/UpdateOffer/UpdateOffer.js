@@ -17,7 +17,6 @@ const UpdateOffer = () => {
   }, []);
  
     const onSubmit = (data) => {
-      console.log(data);
       axios
         .put(`https://dry-gorge-55109.herokuapp.com/offers/${id}`, data)
         .then((res) => {
@@ -31,7 +30,6 @@ const UpdateOffer = () => {
     };
 
     useEffect(() => {
-      console.log(offer);
     }, [offer]);
   
   return (

@@ -68,7 +68,6 @@ const SignUp = () => {
       setError("Password Must Contain 2 digits");
       return;
     }
-    console.log(email, password);
     isLogin ? processLogin(email, password) : signUpNewUser(email, password);
   };
 
@@ -200,17 +199,17 @@ const SignUp = () => {
             </div>
           </Form>
           <div style={{ fontSize: "20px", fontWeight: "bold" }}>
-            
             <Button
               onClick={handleGoogleLogin}
               variant="success"
               className="me-3 text-center"
-            ><span className="me-2 fw-bold">Sign In Using</span> 
+            >
+              <span className="me-2 fw-bold">Sign In Using</span>
               <i className="fab fa-google"></i>{" "}
             </Button>
 
             <Button onClick={handleFacebookLogin} className="me-3 text-center">
-            <span className="me-2 fw-bold">Sign In Using</span> 
+              <span className="me-2 fw-bold">Sign In Using</span>
               <i className="fab fa-facebook"></i>
             </Button>
           </div>

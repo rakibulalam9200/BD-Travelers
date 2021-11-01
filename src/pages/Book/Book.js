@@ -26,7 +26,6 @@ const Book = () => {
     axios
       .post("https://dry-gorge-55109.herokuapp.com/book", data)
       .then((res) => {
-        console.log(res.data);
         if (res.data.insertedId) {
           alert("Booked the Offer Successfully");
           reset();

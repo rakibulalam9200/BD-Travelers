@@ -14,7 +14,6 @@ const ManageOffer = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.deletedCount) {
             alert("Deleted Successfully");
             const remainingOffers = offers.filter((offer) => offer._id !== id);

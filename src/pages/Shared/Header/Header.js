@@ -6,7 +6,6 @@ import useAuth from "../../../hooks/useAuth";
 import userImg from "../../../images/user.png"
 const Header = () => {
   const { user, logOut } = useAuth();
-  console.log(user);
   return (
     <>
       <Navbar
