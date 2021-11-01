@@ -8,3 +8,9 @@
 .travel-text{
     color: red;
 }
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

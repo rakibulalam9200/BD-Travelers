@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import AuthProvider from "./contexts/AuthProvider";
 import AddOffer from "./pages/AddOffer/AddOffer";
+import Book from "./pages/Book/Book";
+import DashBoard from "./pages/DashBoard/DashBoard";
 import Home from './pages/Home/Home/Home';
 import OfferInfo from "./pages/Home/OfferInfo/OfferInfo";
 import PrivateRoute from "./pages/Login/PrivateRoute/PrivateRoute";
@@ -33,6 +35,12 @@ function App() {
             </PrivateRoute> 
             <PrivateRoute path="/manageOffer">
               <ManageOffer></ManageOffer>
+            </PrivateRoute> 
+            <PrivateRoute path="/dashboard">
+              <DashBoard></DashBoard>
+            </PrivateRoute> 
+            <PrivateRoute path="/book/:id">
+              <Book></Book>
             </PrivateRoute> 
             <PrivateRoute path="/offers/:offerId">
               <OfferInfo></OfferInfo>

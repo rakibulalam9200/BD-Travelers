@@ -1,22 +1,22 @@
 import axios from "axios";
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import "./AddOffer.css";
 const AddOffer = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    axios
-      .post("https://dry-gorge-55109.herokuapp.com/offers", data)
-      .then((res) => {
-        if (res.data.insertedId) {
-          alert("Added Successfully");
-          reset();
-        }
-      });
+    axios.post("http://localhost:5000/offers", data).then((res) => {
+      if (res.data.insertedId) {
+        alert("Added Successfully");
+        reset();
+      }
+    });
   };
   return (
     <div className="addOffer">
+      <Helmet><title>Add Offer</title></Helmet>
       <h2 className="text-center my-3">Add A New Offer</h2>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>

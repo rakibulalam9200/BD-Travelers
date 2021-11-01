@@ -25,7 +25,7 @@ const Offer = ({offer}) => {
                     <Link to={`/offers/${_id}`}>
                         <Button className="mx-5" variant="outline-success">
                         {" "}
-                        <i className="fas fa-cart-plus"></i> Book Now
+                        Details
                         </Button>
                     </Link> 
                 </div>
