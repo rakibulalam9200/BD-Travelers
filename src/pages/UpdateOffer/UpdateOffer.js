@@ -10,7 +10,7 @@ const UpdateOffer = () => {
   const { register, handleSubmit } = useForm();
 
   useEffect(() => {
-    const url = `http://localhost:5000/offers/${id}`;
+    const url = `https://dry-gorge-55109.herokuapp.com/offers/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOffer(data));
@@ -18,16 +18,20 @@ const UpdateOffer = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    axios.put(`http://localhost:5000/offers/${id}`, data).then((res) => {
-      if (res.data.modifiedCount > 0) {
-        //console.log(res.data);
-        alert("Updated Successfully");
-      }
-    });
+    axios
+      .put(`https://dry-gorge-55109.herokuapp.com/offers/${id}`, data)
+      .then((res) => {
+        if (res.data.modifiedCount > 0) {
+          //console.log(res.data);
+          alert("Updated Successfully");
+        }
+      });
   };
   return (
     <div className="addOffer">
-      <Helmet><title>Update Offer</title></Helmet>
+      <Helmet>
+        <title>Update Offer</title>
+      </Helmet>
       <h2 className="text-center my-3">Update Offer</h2>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>

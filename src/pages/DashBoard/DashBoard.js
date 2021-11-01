@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const DashBoard = () => {
-    const {user} = useAuth();
-    const [books, setBooks] = useState([]);
+  const { user } = useAuth();
+  const [books, setBooks] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:5000/books/${user.email}`;
+    const url = `https://dry-gorge-55109.herokuapp.com/books/${user.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBooks(data));
   }, []);
-  const handleDelete = id =>{
+  const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure, you want to Delete? ");
     if (proceed) {
-      const url = `http://localhost:5000/books/${id}`;
+      const url = `https://dry-gorge-55109.herokuapp.com/books/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -28,11 +28,13 @@ const DashBoard = () => {
             setBooks(reaminingBooked);
           }
         });
-  }
-}
+    }
+  };
   return (
     <div>
-      <Helmet><title>DashBoard</title></Helmet>
+      <Helmet>
+        <title>DashBoard</title>
+      </Helmet>
       <h2 className="text-center my-2">My Offers</h2>
       <table className="table table-striped table-hover">
         <thead>
@@ -67,7 +69,7 @@ const DashBoard = () => {
               </td>
             </tr>
           ))}
-        </tbody> 
+        </tbody>
       </table>
     </div>
   );

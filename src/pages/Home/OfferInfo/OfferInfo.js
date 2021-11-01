@@ -7,7 +7,7 @@ const OfferInfo = () => {
   const { offerId } = useParams();
   const [offer, setOffer] = useState({});
   useEffect(() => {
-    const url = `http://localhost:5000/offers/${offerId}`;
+    const url = `https://dry-gorge-55109.herokuapp.com/offers/${offerId}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOffer(data));
@@ -36,7 +36,9 @@ const OfferInfo = () => {
               <Button>Go Home</Button>
             </Link>
             <Link to={`/book/${offerId}`}>
-              <Button className="bg-success"><i className="fas fa-cart-plus"></i> Add To Book</Button>
+              <Button className="bg-success">
+                <i className="fas fa-cart-plus"></i> Add To Book
+              </Button>
             </Link>
           </Card.Body>
         </Card>

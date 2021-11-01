@@ -9,7 +9,7 @@ const Book = () => {
   const { user } = useAuth();
   let [offer, setOffer] = useState({});
   useEffect(() => {
-    const url = `http://localhost:5000/offers/${id}`;
+    const url = `https://dry-gorge-55109.herokuapp.com/offers/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setOffer(data));
@@ -21,15 +21,17 @@ const Book = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    let{_id,...newOffer} = offer;
-    data = {...data, ...newOffer};
-    axios.post("http://localhost:5000/book", data).then((res) => {
-      console.log(res.data);
-      if (res.data.insertedId) {
-        alert("Booked the Offer Successfully");
-        reset();
-      }
-    });
+    let { _id, ...newOffer } = offer;
+    data = { ...data, ...newOffer };
+    axios
+      .post("https://dry-gorge-55109.herokuapp.com/book", data)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          alert("Booked the Offer Successfully");
+          reset();
+        }
+      });
   };
   return (
     <div className="addOffer">

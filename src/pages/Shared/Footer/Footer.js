@@ -4,11 +4,10 @@ import { useLocation } from "react-router";
 import logo from "../../../images/travel-logo.svg";
 import "./Footer.css";
 const Footer = () => {
-  const location = useLocation();
-  let homeclass;
   return (
     <div>
-      <div className={`mt-4  pt-5 pb-2 bg-light variant-light text-dark text-center ${location.pathname !== "/home" && "footer"}`}>
+      <div className= "mt-4  pt-5 pb-2 bg-light variant-light text-dark text-center"
+       >
         <div className="pb-3">
           <NavLink
             className="mx-3 menu-item travel travel-text px-3"

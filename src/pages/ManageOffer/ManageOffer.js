@@ -8,7 +8,7 @@ const ManageOffer = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure, you want to Delete? ");
     if (proceed) {
-      const url = `http://localhost:5000/offers/${id}`;
+      const url = `https://dry-gorge-55109.herokuapp.com/offers/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -26,7 +26,9 @@ const ManageOffer = () => {
 
   return (
     <div>
-      <Helmet><title>Manage Offer</title></Helmet>
+      <Helmet>
+        <title>Manage Offer</title>
+      </Helmet>
       <h2 className="text-center my-2">Manage Offers</h2>
       <table className="table table-striped table-hover">
         <thead>
