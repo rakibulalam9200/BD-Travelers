@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ const Offer = ({offer}) => {
                 <Card.Title className="mb-2 text-success ">
                     Date and Time: {tripDate}
                 </Card.Title>
-                <Card.Text className="text-warp">{(description.length>150)?(description.slice(0, 150)):description}</Card.Text>
+                <Card.Text className="text-warp">{description.length>150?description.slice(0,150):description}</Card.Text>
                 <div className="d-flex justify-content-around my-2">
                     <Card.Title className="mb-2 text-muted">Fee: {fee}/Person</Card.Title>
                 </div>

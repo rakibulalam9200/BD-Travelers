@@ -29,7 +29,7 @@ const UpdateOffer = () => {
   
     };
 
-    useEffect(() => {np
+    useEffect(() => {
     }, [offer]);
   
   return (

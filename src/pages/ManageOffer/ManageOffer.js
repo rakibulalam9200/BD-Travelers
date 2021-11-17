@@ -1,10 +1,11 @@
 import React from "react";
+import { Spinner } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import useOffers from "../../hooks/useOffers";
 
 const ManageOffer = () => {
-  const [offers, setOffers] = useOffers([]);
+  const [isLoading,offers, setOffers] = useOffers();
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure, you want to Delete? ");
     if (proceed) {
@@ -29,7 +30,8 @@ const ManageOffer = () => {
         <title>Manage Offer</title>
       </Helmet>
       <h2 className="text-center my-2">Manage Offers</h2>
-      <table className="table table-striped table-hover">
+      {isLoading? <div className="text-center"><Spinner animation="border" variant="primary" /></div>
+      :<table className="table table-striped table-hover">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -39,8 +41,9 @@ const ManageOffer = () => {
           </tr>
         </thead>
         <tbody>
-          {offers.map((offer) => (
-            <tr key={offer._id}>
+          {
+            offers.map(offer =>
+              <tr key={offer._id}>
               <td>{offer.name}</td>
               <td>{offer.tripDate}</td>
               <td>{offer.tripDuration}</td>
@@ -59,9 +62,10 @@ const ManageOffer = () => {
                 </button>
               </td>
             </tr>
-          ))}
+              )
+          }
         </tbody>
-      </table>
+      </table>}
     </div>
   );
 };
